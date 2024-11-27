@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" class="h-full bg-gray-100">
+<head>
+  <meta charset="utf-8">
+  <title>Murder Rates < Detroit Metrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="UTF-8" />
+<!--  <script src="https://cdn.tailwindcss.com"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+</head>
+
+<body class="h-full">
+<h1>Detroit Metrics</h1>
+    <h1 style="margin-left:3rem">Murder Rates</h1>
+    <main style="margin:3rem">
+        <canvas id="murder-rates" style="width:100%"></canvas>
+        <script>
+            const labelsYears = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2028'];
+            // const dataMurders = [310, 340, 320, 340, 300, 290, 300];
+
+            const dataMurderRates = [
+                {
+                    label: 'Detroit',
+                    borderColor: '#0000FF',
+                    backgroundColor: '#0000FF',
+                    borderWidth: 5,
+                    data: [39, 40, 45, 39, 37, 39, 36]
+                },
+                {
+                    label: 'Troy',
+                    borderColor: '#FF2E2E',
+                    backgroundColor: '#FF2E2E',
+                    borderWidth: 5,
+                    data: [2, 1, 3, 2, 1, 2, 1]
+                },
+                {
+                    label: 'Dearborn',
+                    borderColor: '#FF5C5C',
+                    backgroundColor: '#FF5C5C',
+                    borderWidth: 5,
+                    data: [1, 4, 3, 2, 1, 2, 2]
+                },
+                {
+                    label: 'Sterling Heights',
+                    borderColor: '#FF8A8A',
+                    backgroundColor: '#FF8A8A',
+                    borderWidth: 5,
+                    data: [2, 2, 3, 2, 1, 1, 1]
+                },
+                {
+                    label: 'Wyndotte',
+                    borderColor: '#FF2E2E',
+                    backgroundColor: '#FF2E2E',
+                    borderWidth: 5,
+                    data: [1, 3, 3, 2, 2, 2, 1]
+                },
+            ];
+
+            const data = {
+                labels: labelsYears,
+                datasets: dataMurderRates
+            };
+
+            const options = {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Murder Rate per 100,000',
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        },
+                        beginAtZero: true,
+                        max: 60,
+                        ticks: {
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        },
+                        ticks: {
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart("murder-rates", { type: 'line', data:data, options: options } );
+
+        </script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="h-full bg-gray-100">
+<head>
+  <meta charset="utf-8">
+  <title>Murders < Detroit Metrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="UTF-8" />
+<!--  <script src="https://cdn.tailwindcss.com"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+</head>
+
+<body class="h-full">
+<h1>Detroit Metrics</h1>
+    <h1 style="margin-left:3rem">Murders in Detroit</h1>
+    <main style="margin:3rem">
+        <canvas id="murders" style="width:100%;"></canvas>
+        <script>
+            const labelsYears = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2028'];
+            const dataMurders = [310, 340, 320, 340, 300, 290, 300];
+
+            const data = {
+                labels: labelsYears,
+                datasets: [{
+                    data: dataMurders,
+                    borderWidth: 5,
+                }]
+            };
+
+            const options = {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Murders',
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        },
+                        beginAtZero: true,
+                        max: 450,
+                        ticks: {
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        },
+                        ticks: {
+                            font: {
+                                size: 18 // Increase the font size here
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart("murders", { type: 'line', data:data, options: options } );
+
+        </script>
+    </main>
+</body>
+</html>
